@@ -38,7 +38,7 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
 
     public static final String LOG_TAG = EarthquakeActivity.class.getName();
     private EarthquakeAdapter mAdapter;
-    private static final String USGS_REQUEST_URL = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&orderby=time&minmag=5&limit=10";
+    private static final String USGS_REQUEST_URL = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&orderby=time&limit=20";
     private static final int EARTHQUAKE_LOADER_ID = 1;
     private TextView mEmptyStateTextView;
 
@@ -50,8 +50,9 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
 
     @Override
     public void onLoadFinished(Loader<List<Earthquake>> loader, List<Earthquake> earthquakes) {
-        mAdapter.clear();
+
         mEmptyStateTextView.setText(R.string.no_earthquakes);
+        mAdapter.clear();
         View loadingIndicator = findViewById(R.id.loading_indicator);
         loadingIndicator.setVisibility(View.GONE);
 
